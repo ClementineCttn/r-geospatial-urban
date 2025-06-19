@@ -260,7 +260,7 @@ In our analysis, we have a large number of pre-war buildings, and the buffer zon
 
 ``` r
 single_buffer$area <- st_area(single_buffer) %>% 
-  units::set_units(., km^2)
+  set_units(., km^2)
 
 single_buffer$old_buildings_per_km2 <- as.numeric(single_buffer$n_buildings / single_buffer$area)
 
@@ -324,7 +324,7 @@ single_buffer <- single_old_buffer %>%
   mutate(n_buildings = centroid_by_buffer$n)
 
 single_buffer$area <- sf::st_area(single_buffer)  %>% 
-  units::set_units(., km^2)
+  set_units(., km^2)
 single_buffer$old_buildings_per_km2 <- as.numeric(single_buffer$n_buildings / single_buffer$area)
 
  ggplot() + 
