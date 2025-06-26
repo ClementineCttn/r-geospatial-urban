@@ -45,7 +45,6 @@ In the following parts of this workshop, you will use this package to visualize 
 
 ``` r
 library(tidyverse)
-library(terra)
 ```
 
 Now, lets plot the distribution of life expectancy in the `gapminder` dataset:
@@ -201,14 +200,16 @@ p
 
 Now we can make use of the saved object and add things to it.
 
-Let's also give it a title and name the axes:
+Let's also give it a title, name the axes and the legend:
 
 
 ``` r
 p <- p +
-  ggtitle("GDP per capita in Americas", subtitle = "Year 2007") +
-  xlab("Country") +
-  ylab("GDP per capita")
+  labs(title = "GDP per capita in Americas", 
+       subtitle = "Year 2007", 
+       x = "Country", 
+       y = "GDP per capita", 
+       fill = "Life Expectancy categories")
 
 # show plot
 p
