@@ -8,6 +8,7 @@ exercises: 5
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
+- What is R and what is RStudio?
 - How can I find my way around RStudio?
 - How can I manage projects in R?
 - How can I install packages?
@@ -168,6 +169,19 @@ To run all lines before the active line, you can use the keyboard shortcut
 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>B</kbd> on Windows/Linux or 
 <kbd>Command</kbd> + <kbd>option</kbd> + <kbd>B</kbd> on Mac.
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: callout
+
+### Escaping
+
+The console shows it's ready to get new commands with the `>` sign. 
+It will show the `+` sign if it still requires input for the command to be executed.
+
+Sometimes you don't know what is missing, you change your mind and 
+want to run something else, or your code is running much too long 
+and you just want it to stop. 
+The way to do it is to press <kbd>Esc</kbd>.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Packages 
 
@@ -198,7 +212,7 @@ the script:
 
 
 ``` r
-install.packages('tidyverse')
+install.packages("tidyverse")
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -264,7 +278,7 @@ from the `here` package. In the console, we write:
 
 ``` r
 here()
-here('data')
+here("data")
 ```
 
 You all probably have something different printed out. And this is fine, because
@@ -283,7 +297,7 @@ In the script, we will write:
 # Download the data
 download.file(
   "https://bit.ly/geospatial_data",
-  here("data", "gapminder_data.csv")
+  here("data", "gapminder-data.csv")
 )
 ```
 The data we just downloaded is data about country statistics, containing information on, for instance, GDP and life-expectancy. We will work with this data later in the lesson
