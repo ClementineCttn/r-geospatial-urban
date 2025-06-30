@@ -18,13 +18,13 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="incubator-logo" alt="Carpentries Incubator" src="assets/images/incubator-logo.svg"><span class="badge text-bg-danger">
-          <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
+        <img id="incubator-logo" alt="Carpentries Incubator" src="assets/images/incubator-logo.svg"><span class="badge text-bg-info">
+          <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
-              <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
-              Pre-Alpha
+              <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
+              Beta
             </a>
-            <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+            <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
           </abbr>
         </span>
 
@@ -409,7 +409,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Explore and plot by vector layer attributes</h1>
-        <p>Last updated on 2025-06-26 |
+        <p>Last updated on 2025-06-30 |
 
         <a href="https://github.com/carpentries-incubator/r-geospatial-urban/edit/main/episodes/10-explore-and-plot-by-vector-layer-attributes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -607,7 +607,7 @@ variable this way, we have to first transform it into a factor with the
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">factor</span><span class="op">(</span><span class="va">lines_Delft</span><span class="op">$</span><span class="va">highway</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">levels</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">factor</span><span class="op">(</span><span class="va">lines_Delft</span><span class="op">$</span><span class="va">highway</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">levels</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -655,7 +655,7 @@ examples.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>To find the number of fields, we use the <code>ncol()</code>
 function:</li>
@@ -705,7 +705,7 @@ three distinct values in the leisure column. Note that printing an
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># you might be lucky to see three distinct values</span></span>
-<span><span class="fu">head</span><span class="op">(</span><span class="va">point_Delft</span>, <span class="fl">10</span><span class="op">)</span>  </span></code></pre>
+<span><span class="fu">head</span><span class="op">(</span><span class="va">point_Delft</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -740,7 +740,7 @@ variable.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># this is better</span></span>
-<span><span class="fu">na.omit</span><span class="op">(</span><span class="va">point_Delft</span><span class="op">$</span><span class="va">leisure</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">head</span><span class="op">(</span><span class="op">)</span>  </span></code></pre>
+<span><span class="fu">na.omit</span><span class="op">(</span><span class="va">point_Delft</span><span class="op">$</span><span class="va">leisure</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">head</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -757,9 +757,9 @@ the first three of the unique alphabetically ordered values.</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># this is even better</span></span>
-<span><span class="fu">factor</span><span class="op">(</span><span class="va">point_Delft</span><span class="op">$</span><span class="va">leisure</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">levels</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>   </span></code></pre>
+<span><span class="fu">factor</span><span class="op">(</span><span class="va">point_Delft</span><span class="op">$</span><span class="va">leisure</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">levels</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -796,7 +796,7 @@ only <code>cycleways</code> from our street data.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cycleway_Delft</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">%&gt;%</span>   </span>
+<code class="sourceCode R"><span><span class="va">cycleway_Delft</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">highway</span> <span class="op">==</span> <span class="st">"cycleway"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Our subsetting operation reduces the number of features from 11244 to
@@ -830,10 +830,10 @@ segment with <code>st_length()</code></p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cycleway_Delft</span> <span class="op">&lt;-</span> <span class="va">cycleway_Delft</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>length <span class="op">=</span> <span class="fu">st_length</span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">cycleway_Delft</span> <span class="op">&lt;-</span> <span class="va">cycleway_Delft</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>length <span class="op">=</span> <span class="fu">st_length</span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">cycleway_Delft</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">cycleway_Delft</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>total_length <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">length</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -854,8 +854,10 @@ Projected CRS: Amersfoort / RD New
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">cycleway_Delft</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Slow mobility network in Delft"</span>, </span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Cycleways"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Slow mobility network in Delft"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Cycleways"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="fu">st_crs</span><span class="op">(</span><span class="fl">28992</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure style="text-align: center"><img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-cycleway-1.png" alt="Map of cycleways in Delft." class="figure mx-auto d-block"><figcaption>
@@ -881,7 +883,7 @@ Map of cycleways in Delft.
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>To create the new object, we first need to see which value of the
 <code>highway</code> column holds motorways. There is a value called
@@ -909,7 +911,7 @@ Map of cycleways in Delft.
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">motorway_Delft</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">motorway_Delft</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">highway</span> <span class="op">==</span> <span class="st">"motorway"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">motorway_Delft</span></span></code></pre>
@@ -952,9 +954,9 @@ First 10 features:
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">motorway_Delft_length</span> <span class="op">&lt;-</span> <span class="va">motorway_Delft</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>length <span class="op">=</span> <span class="fu">st_length</span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">motorway_Delft_length</span> <span class="op">&lt;-</span> <span class="va">motorway_Delft</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>length <span class="op">=</span> <span class="fu">st_length</span><span class="op">(</span><span class="va">geometry</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="fu">everything</span><span class="op">(</span><span class="op">)</span>, <span class="va">geometry</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>total_length <span class="op">=</span> <span class="fu">sum</span><span class="op">(</span><span class="va">length</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <ol start="4" style="list-style-type: decimal"><li>Plot the motorways.</li>
@@ -962,10 +964,12 @@ First 10 features:
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">motorway_Delft</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">motorway_Delft</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Fast mobility network"</span>, </span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Motorways"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Fast mobility network"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Motorways"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="fu">st_crs</span><span class="op">(</span><span class="fl">28992</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-motorway-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
@@ -1010,8 +1014,8 @@ column.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">road_types</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"motorway"</span>, <span class="st">"primary"</span>, <span class="st">"secondary"</span>, <span class="st">"cycleway"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">lines_Delft_selection</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">highway</span> <span class="op">%in%</span> <span class="va">road_types</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">lines_Delft_selection</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">highway</span> <span class="op">%in%</span> <span class="va">road_types</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>highway <span class="op">=</span> <span class="fu">factor</span><span class="op">(</span><span class="va">highway</span>, levels <span class="op">=</span> <span class="va">road_types</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Next we define the four colours we want to use, one for each type of
@@ -1034,9 +1038,11 @@ with the <code>colors()</code> function.</p>
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">lines_Delft_selection</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">highway</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_color_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">road_colors</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"Mobility Network of Delft"</span>, </span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Main Roads &amp; Cycleways"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Mobility Network of Delft"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Main Roads &amp; Cycleways"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="fu">st_crs</span><span class="op">(</span><span class="fl">28992</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge-adjust-line-width" class="callout challenge">
@@ -1067,7 +1073,7 @@ the same way as <code>color</code> in the legend.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1083,10 +1089,12 @@ the same way as <code>color</code> in the legend.</p></li>
 <span>  <span class="fu">geom_sf</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">highway</span>, linewidth <span class="op">=</span> <span class="va">highway</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_color_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">road_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_linewidth_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="va">line_widths</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
-<span>       linewidth <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
-<span>       title <span class="op">=</span> <span class="st">"Mobility Network of Delft"</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Main Roads &amp; Cycleways"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    color <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
+<span>    linewidth <span class="op">=</span> <span class="st">"Road Type"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Mobility Network of Delft"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Main Roads &amp; Cycleways"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span>datum <span class="op">=</span> <span class="fu">st_crs</span><span class="op">(</span><span class="fl">28992</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
@@ -1117,7 +1125,7 @@ multi-layer maps.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1151,9 +1159,9 @@ multi-layer maps.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># First, create a data frame with only roads where bicycles </span></span>
+<code class="sourceCode R"><span><span class="co"># First, create a data frame with only roads where bicycles</span></span>
 <span><span class="co"># are allowed</span></span>
-<span><span class="va">lines_Delft_bicycle</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">lines_Delft_bicycle</span> <span class="op">&lt;-</span> <span class="va">lines_Delft</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">filter</span><span class="op">(</span><span class="va">highway</span> <span class="op">==</span> <span class="st">"cycleway"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Next, visualise it using ggplot</span></span>
@@ -1255,9 +1263,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/r-geospatial-urban/10-explore-and-plot-by-vector-layer-attributes.html",
   "identifier": "https://carpentries-incubator.github.io/r-geospatial-urban/10-explore-and-plot-by-vector-layer-attributes.html",
-  "dateCreated": "2025-06-26",
-  "dateModified": "2025-06-26",
-  "datePublished": "2025-06-26"
+  "dateCreated": "2025-06-30",
+  "dateModified": "2025-06-30",
+  "datePublished": "2025-06-30"
 }
 
   </script><script>
