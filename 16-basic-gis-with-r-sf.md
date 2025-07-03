@@ -37,7 +37,7 @@ assign("has_internet_via_proxy", TRUE, environment(curl::has_internet))
 
 ## Why `sf` for GIS?
 
-As introduced in [an earlier lesson](episodes/09-open-and-plot-vector-layers.Rmd), `sf` is a package which supports simple features (sf), ["a standardized way to
+As introduced in [an earlier lesson](episodes/06-open-and-plot-vector-layers.Rmd), `sf` is a package which supports simple features (sf), ["a standardized way to
 encode spatial vector data."](https://cran.r-project.org/web/packages/sf/sf.pdf).
 It contains a large set of functions to achieve all the operations on vector spatial data for which you might use traditional GIS software: change the coordinate system, join layers, intersect or unite polygons, create buffers and centroids, etc. cf. the `sf` [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/sf.pdf).
 
@@ -79,7 +79,7 @@ ggplot(data = old_buildings) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-recap-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-recap-1.png" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -163,7 +163,7 @@ ggplot(data = buffer_old_buildings) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-buffer-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-buffer-1.png" style="display: block; margin: auto;" />
 
 ## Union
 
@@ -202,7 +202,7 @@ ggplot() +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-centroids-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-centroids-1.png" style="display: block; margin: auto;" />
 
 ## Intersection & join
 Now, we would like to distinguish conservation areas based on the number of historic buildings they contain. In GIS terms, we would like to know how many centroids each fused buffer polygon contains. This operation means _intersecting_ the layer of polygons with the layer of points and the corresponding function is `st_intersection()`.
@@ -233,7 +233,7 @@ ggplot() +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-intersection-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-intersection-1.png" style="display: block; margin: auto;" />
 
 
 ### Maps of the number of buildings per zone:
@@ -254,7 +254,7 @@ ggplot() +
   )
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-mapping-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-mapping-1.png" style="display: block; margin: auto;" />
  
 ## Calculating area and density of spatial features
 
@@ -263,23 +263,11 @@ In our analysis, we have a large number of pre-war buildings, and the buffer zon
 
 ``` r
 single_buffer$area <- st_area(single_buffer) |> 
-  set_units(., km^2)
-```
+  set_units("km^2")
 
-``` error
-Error: object 'km' not found
-```
-
-``` r
 single_buffer$old_buildings_per_km2 <-
   as.numeric(single_buffer$n_buildings / single_buffer$area)
-```
 
-``` error
-Error in `[[<-.data.frame`(`*tmp*`, i, value = numeric(0)): replacement has 0 rows, data has 7
-```
-
-``` r
 ggplot() + 
   geom_sf(data = buildings) +
   geom_sf(data = single_buffer,
@@ -294,13 +282,7 @@ ggplot() +
   )
 ```
 
-``` error
-Error in `geom_sf()`:
-! Problem while computing aesthetics.
-ℹ Error occurred in the 2nd layer.
-Caused by error:
-! object 'old_buildings_per_km2' not found
-```
+<img src="fig/16-basic-gis-with-r-sf-rendered-area-1.png" style="display: block; margin: auto;" />
 
 
  
@@ -368,7 +350,7 @@ single_buffer$old_buildings_per_km2 <-
    )
 ```
 
-<img src="fig/19-basic-gis-with-r-sf-rendered-parameters-1.png" style="display: block; margin: auto;" />
+<img src="fig/16-basic-gis-with-r-sf-rendered-parameters-1.png" style="display: block; margin: auto;" />
 ::::::::::::::::::::::::
 
 

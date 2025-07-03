@@ -78,6 +78,8 @@ names(lines_Delft)
 
 ::: callout
 
+# The geometry as a column
+
 Note that in R the geometry is just another column and counts towards the number
 returned by `ncol()`. This is different from GIS software with graphical user 
 interfaces, where the geometry is displayed in a viewport not as a column in the 
@@ -140,6 +142,8 @@ unique(lines_Delft$highway)
 ```
 
 :::::::::::::::::::::::: callout 
+
+# Using factors in sf objects
 
 R is also able to handle categorical variables called factors, introduced in [an earlier episode](../episodes/02-data-structures.Rmd). With factors, we can use the `levels()` function to show unique values. To examine unique values of the `highway` variable this way, we have to first transform it into a factor with the `factor()` function:
 
@@ -347,7 +351,7 @@ ggplot(data = cycleway_Delft) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-cycleway-1.png" alt="Map of cycleways in Delft."  />
+<img src="fig/07-explore-and-plot-by-vector-layer-attributes-rendered-plot-cycleway-1.png" alt="Map of cycleways in Delft."  />
 <p class="caption">Map of cycleways in Delft.</p>
 </div>
 
@@ -445,7 +449,7 @@ ggplot(data = motorway_Delft) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-motorway-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-explore-and-plot-by-vector-layer-attributes-rendered-plot-motorway-1.png" style="display: block; margin: auto;" />
 
 :::
 
@@ -503,7 +507,7 @@ ggplot(data = lines_Delft_selection) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types-1.png" style="display: block; margin: auto;" />
 
 ::: challenge
 
@@ -539,7 +543,7 @@ ggplot(data = lines_Delft_selection) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types2-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-explore-and-plot-by-vector-layer-attributes-rendered-plot-highway-types2-1.png" style="display: block; margin: auto;" />
 :::
 
 :::
@@ -602,7 +606,7 @@ ggplot(data = lines_Delft) +
   coord_sf(datum = st_crs(28992))
 ```
 
-<img src="fig/10-explore-and-plot-by-vector-layer-attributes-rendered-plot-cycleways2-1.png" style="display: block; margin: auto;" />
+<img src="fig/07-explore-and-plot-by-vector-layer-attributes-rendered-plot-cycleways2-1.png" style="display: block; margin: auto;" />
 
 :::
 
