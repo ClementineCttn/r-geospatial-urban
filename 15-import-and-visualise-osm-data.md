@@ -149,8 +149,8 @@ x <- opq(bbox = bb) |>
 ```
 
 ``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:33:9:
-! HTTP 429 Too Many Requests.
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:193:9:
+! HTTP 504 Gateway Timeout.
 ```
 
 
@@ -281,7 +281,10 @@ Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:193:9:
 extract_buildings("Naarden, NL")
 ```
 
-<img src="fig/15-import-and-visualise-osm-data-rendered-Replicability-1.png" style="display: block; margin: auto;" />
+``` error
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:33:9:
+! HTTP 429 Too Many Requests.
+```
 
 
 ## Going interactive.
